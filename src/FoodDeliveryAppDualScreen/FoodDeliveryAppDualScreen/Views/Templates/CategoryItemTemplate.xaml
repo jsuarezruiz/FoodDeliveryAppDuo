@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="FoodDeliveryAppDualScreen.Views.Templates.CategoryItemTemplate">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="CategoryImageStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="80" />
+                <Setter Property="Margin" Value="6, 0" />
+            </Style>
+
+            <Style x:Key="CategoryNameStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid
+            RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image
+                Source="{Binding Icon}"
+                Style="{StaticResource CategoryImageStyle}"/>
+            <Label
+                Grid.Row="1"
+                Text="{Binding Name}"
+                Style="{StaticResource CategoryNameStyle}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

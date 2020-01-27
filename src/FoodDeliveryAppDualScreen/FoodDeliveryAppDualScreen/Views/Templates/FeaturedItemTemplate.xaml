@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="FoodDeliveryAppDualScreen.Views.Templates.FeaturedItemTemplate">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="FeaturedItemContainerStyle" TargetType="pancakeview:PancakeView">
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="Margin" Value="12, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Margin" Value="12, 6, 12, 0" />
+            </Style>
+
+            <Style x:Key="PriceStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="Margin" Value="12, 6, 12, 0" />
+            </Style>
+
+            <Style x:Key="IngredientsStyle" TargetType="Label">
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+                <Setter Property="MaxLines" Value="2" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Opacity" Value="0.5" />
+                <Setter Property="Margin" Value="12, 0" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid
+            WidthRequest="300"
+            RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <pancakeview:PancakeView
+                Grid.ColumnSpan="2"
+                Style="{StaticResource FeaturedItemContainerStyle}">
+                <Image
+                    Aspect="AspectFill"
+                    Source="{Binding Image}"/>
+            </pancakeview:PancakeView>
+            <Label
+                Grid.Row="1"
+                Text="{Binding Name}"
+                Style="{StaticResource TitleStyle}"/>
+            <Label
+                Grid.Column="1"
+                Grid.Row="1"
+                Text="{Binding Price, StringFormat='${0}'}"
+                Style="{StaticResource PriceStyle}"/>
+            <Label
+                Grid.ColumnSpan="2"
+                Grid.Row="2"
+                Text="{Binding Ingredients}"
+                Style="{StaticResource IngredientsStyle}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
