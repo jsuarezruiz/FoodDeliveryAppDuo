@@ -24,13 +24,13 @@ namespace FoodDeliveryAppDualScreen.Services
             {
                 return new List<Food>
                 {
-                    new Food { Name = "Burrata", Ingredients = "date conserva, roasted pistachio, crispy pancetta, arugula, grilled bread", Image = "burrata", Price = 12, Category = FoodCategory.Pizza  },
-                    new Food { Name = "Prosciutto Bruschetta", Ingredients = "crescenza cheese, grilled asparagus, truffle, grana padano", Image = "prosciutto", Price = 11, Category = FoodCategory.Pizza  },
-                    new Food { Name = "Grilled Cauliflower", Ingredients = "fried egg, baby asparagus, toasted breadcrumb, pancetta cream, lemon",  Image = "cauliflower", Price = 11, Category = FoodCategory.Pizza  },
-                    new Food { Name = "White Truffle Garlic Bread", Ingredients = "house made ricotta, mozzarella, grana padano, herbs", Image = "trufflegarlic", Price = 12, Category = FoodCategory.Pizza  },
-                    new Food { Name = "Funghi Pizza", Ingredients = "roasted mushroom, cipollini onion, smoked mozzarella", Image = "funghipizza", Price = 15, Category = FoodCategory.Pizza  },
-                    new Food { Name = "Prosciutto  Pizza", Ingredients = "mission fig, goat cheese, arugula", Image = "prosciuttopizza", Price = 16, Category = FoodCategory.Pizza  },
-                    new Food { Name = "Margherita  Pizza", Ingredients = "mozzarella, fresh basil, olive oil, red sauce", Image = "margheritapizza", Price = 16, Category = FoodCategory.Pizza  }
+                    new Food { Name = "Burrata", Ingredients = "date conserva, roasted pistachio, crispy pancetta, arugula, grilled bread", Image = "burrata.jpg", Price = 12, Category = FoodCategory.Pizza  },
+                    new Food { Name = "Prosciutto Bruschetta", Ingredients = "crescenza cheese, grilled asparagus, truffle, grana padano", Image = "prosciutto.jpg", Price = 11, Category = FoodCategory.Pizza  },
+                    new Food { Name = "Grilled Cauliflower", Ingredients = "fried egg, baby asparagus, toasted breadcrumb, pancetta cream, lemon",  Image = "cauliflower.jpg", Price = 11, Category = FoodCategory.Pizza  },
+                    new Food { Name = "White Truffle Garlic Bread", Ingredients = "house made ricotta, mozzarella, grana padano, herbs", Image = "trufflegarlic.jpg", Price = 12, Category = FoodCategory.Pizza  },
+                    new Food { Name = "Funghi Pizza", Ingredients = "roasted mushroom, cipollini onion, smoked mozzarella", Image = "funghipizza.jpg", Price = 15, Category = FoodCategory.Pizza  },
+                    new Food { Name = "Prosciutto  Pizza", Ingredients = "mission fig, goat cheese, arugula", Image = "prosciuttopizza.jpg", Price = 16, Category = FoodCategory.Pizza  },
+                    new Food { Name = "Margherita  Pizza", Ingredients = "mozzarella, fresh basil, olive oil, red sauce", Image = "margheritapizza.jpg", Price = 16, Category = FoodCategory.Pizza  }
                 };
             }
         }
@@ -41,10 +41,10 @@ namespace FoodDeliveryAppDualScreen.Services
             {
                 return new List<Food>
                 {
-                    new Food { Name = "Angus Beef Burger", Ingredients = "1/3 Lb. Patty, House Sauce, Tomato, Pickles, Shaved Onions, American Cheese", Image = "angusbeef", Price = 16, Category = FoodCategory.Burguer  },
-                    new Food { Name = "Grilled Chicken Burger", Ingredients = "1/4 Lb. Chicken, Chipotle Aioli, Mixed Greens, Roma Tomato, Avocado, Swiss Cheese ",  Image = "grilledchicken", Price = 12, Category = FoodCategory.Burguer  },
-                    new Food { Name = "Hawaiian Salmon Burger", Ingredients = "1/4 Lb. Patty, Red Cabbage Slaw, Pineapple, Ginger Vinaigrette, Barbecue Glaze", Image = "hawaiian", Price = 15, Category = FoodCategory.Burguer  },
-                    new Food { Name = "Dry-Aged Beed Burger", Ingredients = "1/3 Lb. Patty, Barbecue, Onion Ring, Bacon, Cheddar Cheese", Image = "angusbeef", Price = 12, Category = FoodCategory.Burguer  },
+                    new Food { Name = "Angus Beef Burger", Ingredients = "1/3 Lb. Patty, House Sauce, Tomato, Pickles, Shaved Onions, American Cheese", Image = "angusbeef.jpg", Price = 16, Category = FoodCategory.Burguer  },
+                    new Food { Name = "Grilled Chicken Burger", Ingredients = "1/4 Lb. Chicken, Chipotle Aioli, Mixed Greens, Roma Tomato, Avocado, Swiss Cheese ",  Image = "grilledchicken.jpg", Price = 12, Category = FoodCategory.Burguer  },
+                    new Food { Name = "Hawaiian Salmon Burger", Ingredients = "1/4 Lb. Patty, Red Cabbage Slaw, Pineapple, Ginger Vinaigrette, Barbecue Glaze", Image = "hawaiian.jpg", Price = 15, Category = FoodCategory.Burguer  },
+                    new Food { Name = "Dry-Aged Beed Burger", Ingredients = "1/3 Lb. Patty, Barbecue, Onion Ring, Bacon, Cheddar Cheese", Image = "angusbeef.jpg", Price = 12, Category = FoodCategory.Burguer  },
                 };
             }
         }
@@ -72,12 +72,12 @@ namespace FoodDeliveryAppDualScreen.Services
             {
                 return new List<Restaurant>
                 {
-                    new Restaurant { Name = "Eat Greek", Image = "eatgreek", Category = RestaurantCategory.Salads, DeliveryCost = "1", DeliveryTime = 20, Rating = 4.2d, Food = Foods1  },
-                    new Restaurant { Name = "The House Burguer", Image = "theburguerhouse", Category = RestaurantCategory.Burgers, DeliveryCost = "1", DeliveryTime = 25, Rating = 4.1d, Food = Foods2  },
-                    new Restaurant { Name = "Parmigiano", Image = "parmigiano", Category = RestaurantCategory.Italians, DeliveryCost = "2", DeliveryTime = 25, Rating = 3.2d, Food = Foods1  },
-                    new Restaurant { Name = "Nickel & Dinner", Image = "nickeldinner", Category = RestaurantCategory.Breakfast, DeliveryCost = "2", DeliveryTime = 30, Rating = 3.9d, Food = Foods1  },            
-                    new Restaurant { Name = "Salad History", Image = "saladhistory", Category = RestaurantCategory.Salads, DeliveryCost = "0.5", DeliveryTime = 30, Rating = 4.1d, Food = Foods1  },
-                    new Restaurant { Name = "Wok", Image = "wok", Category = RestaurantCategory.Asian, DeliveryCost = "1", DeliveryTime = 30, Rating = 3.3d, Food = Foods1  }
+                    new Restaurant { Name = "Eat Greek", Image = "eatgreek.jpg", Category = RestaurantCategory.Salads, DeliveryCost = "1", DeliveryTime = 20, Rating = 4.2d, Food = Foods1  },
+                    new Restaurant { Name = "The House Burguer", Image = "theburguerhouse.jpg", Category = RestaurantCategory.Burgers, DeliveryCost = "1", DeliveryTime = 25, Rating = 4.1d, Food = Foods2  },
+                    new Restaurant { Name = "Parmigiano", Image = "parmigiano.jpg", Category = RestaurantCategory.Italians, DeliveryCost = "2", DeliveryTime = 25, Rating = 3.2d, Food = Foods1  },
+                    new Restaurant { Name = "Nickel & Dinner", Image = "nickeldinner.jpg", Category = RestaurantCategory.Breakfast, DeliveryCost = "2", DeliveryTime = 30, Rating = 3.9d, Food = Foods1  },            
+                    new Restaurant { Name = "Salad History", Image = "saladhistory.jpg", Category = RestaurantCategory.Salads, DeliveryCost = "0.5", DeliveryTime = 30, Rating = 4.1d, Food = Foods1  },
+                    new Restaurant { Name = "Wok", Image = "wok.jpg", Category = RestaurantCategory.Asian, DeliveryCost = "1", DeliveryTime = 30, Rating = 3.3d, Food = Foods1  }
                 };
             }
         }

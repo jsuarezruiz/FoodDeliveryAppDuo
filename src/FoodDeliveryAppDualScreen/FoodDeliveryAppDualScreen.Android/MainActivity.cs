@@ -3,12 +3,12 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Xamarin.Forms;
-using FoodDeliveryAppDualScreen.Droid.Services;
+using Xamarin.Forms.DualScreen;
 
 namespace FoodDeliveryAppDualScreen.Droid
 {
     [Activity(
-        Label = "FoodDeliveryDuoApp",
+        Label = "FoodDelivery",
         Icon = "@mipmap/icon",
         Theme = "@style/MainTheme",
         MainLauncher = true,
@@ -17,8 +17,6 @@ namespace FoodDeliveryAppDualScreen.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            HingeService.MainActivity = this;
-
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -27,11 +25,13 @@ namespace FoodDeliveryAppDualScreen.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             Forms.SetFlags("IndicatorView_Experimental");
+            DualScreenService.Init(this);
             Forms.Init(this, savedInstanceState);
+
             LoadApplication(new App());
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 

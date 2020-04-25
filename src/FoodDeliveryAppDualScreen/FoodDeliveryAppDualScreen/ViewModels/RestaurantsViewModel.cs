@@ -2,6 +2,7 @@
 using FoodDeliveryAppDualScreen.Services;
 using FoodDeliveryAppDualScreen.ViewModels.Base;
 using System.Collections.ObjectModel;
+using Xamarin.Forms.DualScreen;
 
 namespace FoodDeliveryAppDualScreen.ViewModels
 {
@@ -15,6 +16,8 @@ namespace FoodDeliveryAppDualScreen.ViewModels
         {
             LoadData();
         }
+
+        public bool IsSpanned => DualScreenInfo.Current.SpanMode != TwoPaneViewMode.SinglePane;
 
         public ObservableCollection<RestaurantCategory> Categories
         {

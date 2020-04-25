@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:templates="clr-namespace:FoodDeliveryAppDualScreen.Views.Templates"
-             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-             mc:Ignorable="d"
-             x:Class="FoodDeliveryAppDualScreen.Views.RestaurantDetailView">
+<ContentView
+    x:Name="RestaurantDetail"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:templates="clr-namespace:FoodDeliveryAppDualScreen.Views.Templates"
+    xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+    mc:Ignorable="d"
+    x:Class="FoodDeliveryAppDualScreen.Views.RestaurantDetailView"
+    BackgroundColor="{StaticResource BackgroundColor}">
     <ContentView.Resources>
         <ResourceDictionary>
 
@@ -49,10 +52,10 @@
             </Style>
 
             <Style x:Key="TabStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="Margin" Value="0, 0, 36, 0" />
+                <Setter Property="Margin" Value="0, 0, 12, 0" />
             </Style>
 
         </ResourceDictionary>
@@ -63,14 +66,17 @@
                 RowSpacing="0"
                 BindingContext="{Binding CurrentRestaurant}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="250" />
-                    <RowDefinition Height="60" />
-                    <RowDefinition Height="280" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="260" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                <!-- HEADER -->
                 <Grid
-                    Grid.Row="0">
+                    Grid.Row="0"
+                    HeightRequest="250"
+                    IsVisible="{Binding Source={x:Reference RestaurantDetail}, Path=BindingContext.IsSpanned}">
                     <Image
                         Aspect="AspectFill"
                         Source="{Binding Image}"/>
@@ -81,7 +87,9 @@
                 <!-- RESTAURANT INFO -->
                 <Grid
                     Grid.Row="0"
-                    Grid.RowSpan="2">
+                    Grid.RowSpan="2"
+                    HeightRequest="300"
+                    IsVisible="{Binding Source={x:Reference RestaurantDetail}, Path=BindingContext.IsSpanned}">
                     <pancakeview:PancakeView
                         Style="{StaticResource RestaurantContainerStyle}">
                             <Grid
@@ -170,10 +178,12 @@
                 <!-- SEPARATOR -->
                 <Grid
                     Grid.Row="3"
-                    Style="{StaticResource SeparatorStyle}"/>
-                <!-- FOOD -->
+                    Style="{StaticResource SeparatorStyle}"
+                    IsVisible="{Binding Source={x:Reference RestaurantDetail}, Path=BindingContext.IsSpanned, Converter={StaticResource IsRestaurantMenuVisibleConverter}}"/>
+                <!-- MENU -->
                 <Grid
-                    Grid.Row="4">
+                    Grid.Row="4"
+                    IsVisible="{Binding Source={x:Reference RestaurantDetail}, Path=BindingContext.IsSpanned, Converter={StaticResource IsRestaurantMenuVisibleConverter}}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />

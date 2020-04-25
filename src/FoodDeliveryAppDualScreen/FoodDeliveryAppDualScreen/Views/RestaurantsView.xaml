@@ -1,25 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:templates="clr-namespace:FoodDeliveryAppDualScreen.Views.Templates"
-             mc:Ignorable="d"
-             x:Class="FoodDeliveryAppDualScreen.Views.RestaurantsView">
+<ContentView
+    x:Name="Restaurants"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:templates="clr-namespace:FoodDeliveryAppDualScreen.Views.Templates"  
+    mc:Ignorable="d"
+    x:Class="FoodDeliveryAppDualScreen.Views.RestaurantsView"
+    BackgroundColor="{StaticResource BackgroundColor}">
     <ContentView.Resources>
         <ResourceDictionary>
 
             <Style x:Key="HeaderButtonStyle" TargetType="ImageButton">
-                <Setter Property="WidthRequest" Value="48" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="40" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="Margin" Value="6" />
             </Style>
 
             <Style x:Key="HeaderTitleStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="32" />
+                <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="Black" />
-                <Setter Property="Margin" Value="0, -6, 0, 0" />
             </Style>
 
              <Style x:Key="HeaderSubTitleStyle" TargetType="Label">
@@ -30,6 +33,7 @@
 
             <Style x:Key="TopRestaurantsCarouselStyle" TargetType="CarouselView">
                 <Setter Property="PeekAreaInsets" Value="0, 0, 120, 0" />
+                <Setter Property="HorizontalScrollBarVisibility" Value="Never" />
             </Style>
 
             <Style x:Key="TopRestaurantsIndicatorStyle" TargetType="IndicatorView">
@@ -39,7 +43,7 @@
                 <Setter Property="HorizontalOptions" Value="Center" />
             </Style>
 
-              <Style x:Key="SectionTitleStyle" TargetType="Label">
+            <Style x:Key="SectionTitleStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="22" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="Black" />
@@ -55,33 +59,39 @@
         <ScrollView>
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="60" />
                     <RowDefinition Height="100" />
-                    <RowDefinition Height="200" />
-                    <RowDefinition Height="120" />
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <!-- BACKGROUND -->
                 <Image
-                    Grid.RowSpan="3"
+                    Grid.RowSpan="2"
                     Aspect="AspectFill"
                     Source="background"/>
                 <!-- HEADER -->
                 <Grid
-                    Margin="12">
+                    Grid.Row="0"
+                    Margin="12, 12, 12, 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <StackLayout>
+                    <Grid
+                        RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
                         <Label
                             Text="Delivery address"
                             Style="{StaticResource HeaderSubTitleStyle}"/>
                         <Label
+                            Grid.Row="1"
                             Text="Bielawska 12"
                             Style="{StaticResource HeaderTitleStyle}"/>
-                    </StackLayout>
+                    </Grid>
                     <ImageButton
                         Grid.Column="1"
                         Source="search"
@@ -94,7 +104,8 @@
                 <!-- CAROUSEL -->
                 <Grid
                     Grid.Row="1"
-                    Grid.RowSpan="2">
+                    Grid.RowSpan="2"
+                    RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
@@ -103,6 +114,7 @@
                         x:Name="TopRestaurantsCarousel"
                         ItemsSource="{Binding Restaurants}"
                         CurrentItem="{Binding CurrentRestaurant, Mode=TwoWay}"
+                        IndicatorView="TopRestaurantsIndicator"
                         Style="{StaticResource TopRestaurantsCarouselStyle}">
                         <CarouselView.ItemTemplate>
                             <DataTemplate>
@@ -111,8 +123,8 @@
                         </CarouselView.ItemTemplate>
                     </CarouselView>
                     <IndicatorView
+                        x:Name="TopRestaurantsIndicator"
                         Grid.Row="1" 
-                        ItemsSourceBy="TopRestaurantsCarousel"
                         Style="{StaticResource TopRestaurantsIndicatorStyle}"/>
                 </Grid>
                 <!-- CATEGORIES -->
@@ -130,10 +142,11 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <!-- ALL RESTAURANTS -->
+                <!-- RELATED RESTAURANTS -->
                 <Grid
                     Grid.Row="4"
-                    Margin="12">
+                    Margin="12"
+                    IsVisible="{Binding Source={x:Reference Restaurants}, Path=BindingContext.IsSpanned}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
@@ -153,7 +166,7 @@
                             Grid.ColumnSpan="2"/>
                         <Label
                             Grid.Row="1"
-                            Text="All restaurants"
+                            Text="Related restaurants"
                             Style="{StaticResource SectionTitleStyle}"/>
                         <Label
                             Grid.Row="2"
