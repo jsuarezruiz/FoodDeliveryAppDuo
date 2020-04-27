@@ -17,8 +17,16 @@ namespace FoodDeliveryAppDualScreen.ViewModels
             LoadData();
         }
 
-        public bool IsSpanned => DualScreenInfo.Current.SpanMode != TwoPaneViewMode.SinglePane;
+        public bool IsSpanned { get; private set; }
 
+        public TwoPaneViewMode Mode
+        {
+            set
+            {
+                IsSpanned = DualScreenInfo.Current.SpanMode != TwoPaneViewMode.SinglePane;
+                OnPropertyChanged(nameof(IsSpanned));
+            }
+        }
         public ObservableCollection<RestaurantCategory> Categories
         {
             get { return _categories; }
