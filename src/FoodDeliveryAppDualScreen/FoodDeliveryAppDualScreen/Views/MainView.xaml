@@ -34,6 +34,7 @@
         <dualScreen:TwoPaneView
             x:Name="TwoPaneView"
             PanePriority="Pane1"
+            Mode="{Binding Mode, Mode=OneWayToSource}"
             MinWideModeWidth="1000">
             <dualScreen:TwoPaneView.BindingContext>
                 <viewmodels:RestaurantsViewModel />
