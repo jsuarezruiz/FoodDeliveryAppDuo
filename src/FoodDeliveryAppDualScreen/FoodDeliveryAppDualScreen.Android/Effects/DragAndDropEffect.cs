@@ -41,11 +41,18 @@ namespace FoodDeliveryAppDualScreen.Droid.Effects
                 var dragAndDropEffect = (FoodDeliveryAppDualScreen.Effects.DragAndDropEffect)
                         _dragAndDropEffect.Element.Effects.FirstOrDefault(e => e is FoodDeliveryAppDualScreen.Effects.DragAndDropEffect);
 
-                if (dragAndDropEffect.Uri == null)
+                string uri = dragAndDropEffect.Uri;
+
+                if(uri == null && _dragAndDropEffect.Element is Image i && i.Source is UriImageSource uriIS)
+                {
+                    uri = uriIS.Uri.ToString();
+                }
+
+                if (String.IsNullOrWhiteSpace(uri))
                     return true;
 
                 var data = ClipData.NewRawUri(new Java.Lang.String(dragAndDropEffect.Description ?? String.Empty),
-                    AUri.Parse(dragAndDropEffect.Uri.ToString()));
+                    AUri.Parse(uri.ToString()));
 
                 var dragShadowBuilder = new AView.DragShadowBuilder(v);
 
