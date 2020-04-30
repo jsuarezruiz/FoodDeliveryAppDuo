@@ -20,6 +20,5 @@
   
     <ItemGroup>
       <Folder Include="Converters\" />
-      <Folder Include="Effects\" />
     </ItemGroup>
 </Project>
